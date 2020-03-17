@@ -52,7 +52,7 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
 
     # Your code goes here (remove pass)
     year_fix = year - 2000
-    grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum(level=0)
+    grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum()
     sort_all = grouped.sort_values(by=[f"{month}/{day}/{year_fix}"], ascending = False)
     top5_countries = sort_all["Country/Region"].tolist()
     mielonka = top5_countries[:5]
