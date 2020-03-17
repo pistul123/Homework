@@ -37,7 +37,7 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
 
 
 
-def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
+def top5_countries_by_date(day: int, month: int, year: int = 20) -> List[str]:
     """
     Returns the top 5 infected countries given a date (confirmed cases).
     Ex.
@@ -52,11 +52,10 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
 
     # Your code goes here (remove pass)
-    year -= 2000
     data = f"{month}/{day}/{year}"
-    grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum(level=0)
+    grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum()
     sort_all = grouped.sort_values(by=data, ascending = False)
-    top5_countries = sort_all["Country/Region"].values[:5]
+    top5_countries = sort_all["Country/Region"].values[:5].tolist()
     return top5_countries
 
 
