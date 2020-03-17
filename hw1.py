@@ -30,11 +30,12 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    url = f"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv"
-    df = pd.read_csv(url, error_bad_lines=False)
-    year -= 2000
-    result = df.loc[df["Country/Region"]=="Poland"][f"{month}/{day}/{year}"].values[0]
-    return result
+  year -= 2000
+  data = f"{month}/{day}/{year}"
+  grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum(level=0)
+  sort_all = grouped.sort_values(by=data, ascending = False)
+  top5_countries = list(sort_all["Country/Region"].values[:5])
+  return top5_countries
 
   #print("przypadki: ", poland_cases_by_date(7, 3, 2020))
 
@@ -81,11 +82,11 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    year -= 2000
-    data_teraz = f"{month}/{day}/{year}"
-    d = datetime.date(year,month,day)
-    wczoraj = d+datetime.timedelta(days=-1)
-    wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year}"
-    wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
-    return wynikowo.shape[0]
+  year -= 2000
+  data_teraz = f"{month}/{day}/{year}"
+  d = datetime.date(year,month,day)
+  wczoraj = d+datetime.timedelta(days=-1)
+  wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year}"
+  wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
+  return wynikowo.shape[0]
  #print(no_new_cases_count(11, 2, 2020))
