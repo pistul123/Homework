@@ -37,7 +37,7 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
 
 
 
-def top5_countries_by_date(day: int, month: int, year: int = 20) -> List[str]:
+def top5_countries_by_date(day: int, month: int, year: int = 2020):
     """
     Returns the top 5 infected countries given a date (confirmed cases).
     Ex.
