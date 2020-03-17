@@ -57,6 +57,8 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     top5_countries = sort_all["Country/Region"].tolist()
     mielonka = top5_countries[:5]
     return mielonka
+print(top5_countries_by_date(27,2,2020))
+print(top5_countries_by_date(12, 3))
 
 
 # Function name is wrong, read the pydoc
