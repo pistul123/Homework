@@ -83,5 +83,6 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     d = datetime.date(year,month,day)
     wczoraj = d+datetime.timedelta(days=-1)
     wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year}"
-    return wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
+    wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
+    return wynikowo.shape[0]
     
