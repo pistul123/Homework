@@ -41,9 +41,9 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020):
     """
     Returns the top 5 infected countries given a date (confirmed cases).
     Ex.
-    >>> top5_countries_by_date(27, 2, 2020)
+    top5_countries_by_date(27, 2, 2020)
     ['China', 'Korea, South', 'Cruise Ship', 'Italy', 'Iran']
-    >>> top5_countries_by_date(12, 3)
+    top5_countries_by_date(12, 3)
     ['China', 'Italy', 'Iran', 'Korea, South', 'France']
     :param day: 4 digit integer representation of the year to get the countries for, defaults to 2020
     :param month: Day of month to get the countries for as an integer indexed from 1
