@@ -30,8 +30,8 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    year -= 2000
-    data = f"{month}/{day}/{year}"
+    year_another -= year - 2000
+    data = f"{month}/{day}/{year_another}"
     grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum(level=0)
     sort_all = grouped.sort_values(by=data, ascending = False)
     top5_countries = list(sort_all["Country/Region"].values[:5])
@@ -54,8 +54,8 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
 
     # Your code goes here (remove pass)
-    year -= 2000
-    data = f"{month}/{day}/{year}"
+    year_another -= year - 2000
+    data = f"{month}/{day}/{year_another}"
     grouped = confirmed_cases.groupby("Country/Region", as_index=False).sum(level=0)
     sort_all = grouped.sort_values(by=data, ascending = False)
     top5_countries = list(sort_all["Country/Region"].values[:5])
@@ -78,11 +78,11 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
     
     # Your code goes here (remove pass)
-    year -= 2000
-    data_teraz = f"{month}/{day}/{year}"
-    d = datetime.date(year,month,day)
+    year_another -= year - 2000
+    data_teraz = f"{month}/{day}/{year_another}"
+    d = datetime.date(year_another,month,day)
     wczoraj = d+datetime.timedelta(days=-1)
-    wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year}"
+    wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year_another}"
     wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
     return wynikowo.shape[0]
     
