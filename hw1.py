@@ -36,8 +36,6 @@ def poland_cases_by_date(day: int, month: int, year: int = 2020) -> int:
     sort_all = grouped.sort_values(by=data, ascending = False)
     top5_countries = list(sort_all["Country/Region"].values[:5])
     return top5_countries
-print(poland_cases_by_date(7, 3, 2020))
-print(poland_cases_by_date(11, 3))
 
 def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     """
@@ -62,8 +60,6 @@ def top5_countries_by_date(day: int, month: int, year: int = 2020) -> List[str]:
     sort_all = grouped.sort_values(by=data, ascending = False)
     top5_countries = list(sort_all["Country/Region"].values[:5])
     return top5_countries
-print(top5_countries_by_date(27, 2, 2020))
-print(top5_countries_by_date(12, 3))
 
 def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     """
@@ -89,5 +85,3 @@ def no_new_cases_count(day: int, month: int, year: int = 2020) -> int:
     wczoraj_string = f"{wczoraj.month}/{wczoraj.day}/{wczoraj.year}"
     wynikowo = confirmed_cases.loc[confirmed_cases[data_teraz]!=confirmed_cases[wczoraj_string]]
     return wynikowo.shape[0]
-print(no_new_cases_count(11, 2, 2020))
-print(no_new_cases_count(3, 3))
