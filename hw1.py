@@ -1,7 +1,6 @@
 from typing import List
 import datetime
 import pandas as pd
-from typing import List
 
 
 CONFIRMED_CASES_URL = f"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data" \
